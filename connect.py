@@ -374,6 +374,10 @@ def get_moving_averages(instrument, duration, end_date):
     print(f"Konečné datum a čas: {end_date}")
     print(f"Velikost svíčky: 10 mins")
 
+    if is_paper_account(ib):
+        ib.reqMarketDataType(3)
+        time.sleep(1)
+    
     try:
         bars = ib.reqHistoricalData(
             contract,
